@@ -1,0 +1,25 @@
+---
+title: "Angel Gallardo sql 02"
+output: html_document
+date: '2024-02-04'
+---
+# Introduction
+This assignment creates a data fram that shows a rating on a scale of 1-5 of recent movies. The data will be sourced from a Movie_ratings in MYSQL.
+```{r}
+install.packages("RMySQL")
+library(RMySQL)
+con <- dbConnect(MySQL(), 
+                 user = "root", 
+                 password = "CUNYsps1295", 
+                 dbname = "Movie_ratings", 
+                 host = "34.121.209.100")
+result <- dbGetQuery(con, "SELECT * FROM Movie_ratings")
+summary(result)
+
+result[result == ""] <- 0
+result                   
+```
+#Conclusion
+I was able to load the SQL data into R and adjust the blank values.
+
+
